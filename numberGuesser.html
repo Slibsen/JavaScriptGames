@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="stylesheets/numberGuesser.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Guess a number between 1-1000</h3>
+
+        <input type="text" placeholder="1-1000" id="guess">
+        <br><br>
+        <button onclick="guess()" id="guessBtn">Guess</button>
+
+        <p id="message1">Number of guesses: 0</p>
+        <p id="message2">Guessed numbers: </p>
+        <p id="message3"></p>
+
+        <button onclick="reload()" class="newGameBtn"">New Game</button>
+    </div>
+    <script src="numberGuesser.js"></script>
+</body>
+
+</html>
