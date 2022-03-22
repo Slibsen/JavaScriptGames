@@ -1,21 +1,18 @@
 body{
-    height: 100vh;
-    background: gray;
+    height: 600px;
+    background: rgb(37, 36, 36);
 }
 
 .container{
-    position: absolute;
-    width: 50%;
-    min-width: 580px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    background-color: #ffff;
-    padding: 50px 10px;
-    border-radius: 5px;
     display: grid;
     justify-items: center;
-    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    background-color: rgb(248, 248, 248);
+    padding: 50px 10px;
+    border-radius: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
@@ -25,9 +22,9 @@ h3{
 
 }
 input[type='text']{
-    width: 130px;
+    width: 150px;
     font-weight: 600;
-    color: rgb(24, 24, 26);
+    color: rgb(15, 15, 32);
     padding: 10px 0;
     text-align: center;
     margin-top: 30px;
@@ -37,20 +34,6 @@ input[type='text']{
     font-size: 28px;
 }
 
-.guessBtn{
-    width: 160px;
-    padding: 15px 0;
-    border-radius: 5px;
-    background-color: cornflowerblue;
-    color: black;
-    border: none;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    outline: none;
-
-}
 .newGameBtn{
     width: 160px;
     padding: 15px 0;
