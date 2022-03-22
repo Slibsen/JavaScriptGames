@@ -40,6 +40,8 @@ function guess(){
         msg2.textContent = "You've used up all your guesses";
         msg3.textContent = "The correct answer was: " + answer;
         document.getElementById("guessBtn").disabled = true;
+    
+        
     }
 }
 
