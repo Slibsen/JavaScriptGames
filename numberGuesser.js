@@ -35,7 +35,7 @@ function guess(){
 
     }
 
-    if (noOfGuesses == 10){
+    if (noOfGuesses > 9 && playerGuess != answer){
         msg1.textContent = "The computer wins!";
         msg2.textContent = "You've used up all your guesses";
         msg3.textContent = "The correct answer was: " + answer;
