@@ -1,0 +1,21 @@
+div.activeDice{
+	float:left;
+	width:32px;
+	background:#F5F5F5;
+	border:#999 1px solid;
+	padding:10px;
+	font-size:24px;
+	text-align:center;
+	margin:5px;
+}
+
+div.inactiveDice{
+	float:right;
+	width:32px;
+	background:#ff0000;
+	border:#999 1px solid;
+	padding:10px;
+	font-size:24px;
+	text-align:center;
+	margin:5px;
+}

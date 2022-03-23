@@ -49,18 +49,3 @@ function reload(){
     window.location.reload();
     document.getElementById("guess").value = '';
 }
-
-function createCookie(name, result, days){
-    let expires;
-    if (days){
-        let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toGMTString();
-    }
-    else {
-        expires = "";
-    }
-    document.cookie = name + "=" + result + expires + ";path=/";
-
-
-}
