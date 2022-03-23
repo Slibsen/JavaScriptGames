@@ -1,5 +1,6 @@
 header, body {
     margin: 0;
+    background-color: rgb(223, 223, 215);
 }
 .topnav{
     list-style: none;
@@ -9,30 +10,22 @@ header, body {
     top: 0;
     left: 0;
     width: 100%;
-    overflow: hidden;
-    background-color: #333;
-}
+    background-color: rgba(2, 2, 2, 0.918);
 
-.topnav li{
-    float: left;
-    border-left: 1px solid #bbb;
 }
 
 ul li a{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 1em 1.5em;
+    float: left;
+    color: rgb(212, 205, 205);
+    margin-left: 10em;
+    padding: 10px 10px;
+    font-size: 17px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
 }
 
 ul li a:hover {
-    background-color: #111;
-}
-
-ul a.active{
-    background-color: rgb(87, 3, 3);
-
+    background-color: rgb(97, 96, 96);
 }
 
 #maincontent{
@@ -42,6 +35,15 @@ ul a.active{
 
 #intro {
     padding: 10px;
+    margin-left: 25%;
     font-size: 18px;
-    text-align: center;
+    text-align: justify;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#barroevHeader{
+    margin-left: 30%;
+}
+
+#numberGuesserHeader{
+    margin-left: 30%;
 }
