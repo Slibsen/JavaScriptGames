@@ -2,41 +2,48 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>Projektopgave 2 Elisabeth & Flemming</title>
         <link rel="stylesheet" href="stylesheets/barroev.css"/>
+        <link rel="stylesheet" href="stylesheets/style.css"/>
         <script src="/scripts/barroev.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/github-dark.min.css">
         <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
         
     </head>
     <body>
-        <script>hljs.highlightAll();</script>
-        <div id="game">
-            <h1>Bar Røv - brug knapperne til at spille</h1>
-            <div id="buttons">
-                <button id="rollBtn" onclick="rollDice()">Roll Dice</button>
-                <button id="nextBtn" onclick="nextTurn()">Next Turn</button>
-                <button id="clearBtn" onclick="newGame()">Start forfra</button>
+        <header>
+            <ul class = "topnav">
+                <li><a href="index.html">Forside</a></li>
+                <li><a href="numberGuesser.html">Gæt et tal</a></li>
+                <li><a class = "active"  href="barroev.html">Bar Røv</a></li>    
+            </ul>  
+        </header>
+        <main>
+            <script>hljs.highlightAll();</script>
+            <div id="game">
+                <h1>Bar Røv - brug knapperne til at spille</h1>
+                <div id="buttons">
+                    <button id="rollBtn" onclick="rollDice()">Roll Dice</button>
+                    <button id="nextBtn" onclick="nextTurn()">Next Turn</button>
+                    <button id="clearBtn" onclick="newGame()">Start forfra</button>
+                </div>
+                <h3 id="activeTurnMsg" class="message" style="clear:left;"></h2>
+                <h3 id="roundScoreMsg" class="message" style="clear:left;"></h2>
+                <div id="diceObjects">
+                    <div id="die1" class="activeDice">0</div>
+                    <div id="die2" class="activeDice">0</div>
+                    <div id="die3" class="activeDice">0</div>
+                    <div id="die4" class="activeDice">0</div>
+                    <div id="die5" class="activeDice">0</div>
+                    <div id="die6" class="activeDice">0</div>
+                </div>
+                <h3 id="p1ScoreMsg" class="message" style="clear:left;"></h2>
+                <h3 id="p2ScoreMsg" class="message" style="clear:left;"></h2>
+                <h3 id="status" class="message" style="clear:left;"></h2>
             </div>
-            <h3 id="activeTurnMsg" class="message" style="clear:left;"></h2>
-            <h3 id="roundScoreMsg" class="message" style="clear:left;"></h2>
-            <div id="diceObjects">
-                <div id="die1" class="activeDice">0</div>
-                <div id="die2" class="activeDice">0</div>
-                <div id="die3" class="activeDice">0</div>
-                <div id="die4" class="activeDice">0</div>
-                <div id="die5" class="activeDice">0</div>
-                <div id="die6" class="activeDice">0</div>
-            </div>
-            <h3 id="p1ScoreMsg" class="message" style="clear:left;"></h2>
-            <h3 id="p2ScoreMsg" class="message" style="clear:left;"></h2>
-            <h3 id="status" class="message" style="clear:left;"></h2>
-        </div>
-        <div id="code">
-            <h2>Bar Røv - HTML</h2>
-            <pre><code class="language-html">
+            <div id="code">
+                <h2>Bar Røv - HTML</h2>
+                <pre><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -319,8 +326,9 @@ function rollDice() {
         winner(player);
     }
     
-}
-</code></pre>
-        </div>
+}</code></pre>
+            </div>
+        </main>
+        
     </body>
 </html>

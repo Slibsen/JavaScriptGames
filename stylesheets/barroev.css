@@ -1,8 +1,8 @@
-body{
+
+main{
 	height: 100%;
-	width: 100%;
-	background-color: rgb(37, 36, 36);
 }
+
 
 div.activeDice{
 	float:left;
@@ -28,8 +28,10 @@ div.inactiveDice{
 
 #game{
 	width: 80%;
+	height: 100%;
 	display: grid;
 	margin: auto;
+	padding-top: 5%;
 	justify-items: center;
 	background-color: rgb(226, 226, 218);
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif';
@@ -44,15 +46,4 @@ div.inactiveDice{
 	margin-left: 1%;
 }
 
-#code{
-	width: 80%;
-	display: grid;
-	margin: auto;
-	justify-items: center;
-	background-color: rgb(226, 226, 218);
-}
 
-pre{
-	min width: 60%
-	max-width: 60%;
-}

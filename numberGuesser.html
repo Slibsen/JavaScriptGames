@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Gæt et tal</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="stylesheets/numberGuesser.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/github-dark.min.css">
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
-</head>
-<body>
-    <script>hljs.highlightAll();</script>
-    <ul class = "topnav">
-        <li><a href="index.html">Forside</a></li>
-        <li><a class = "active" href="numberGuesser.html">Gæt et tal</a></li>
-        <li><a href="barroev.html">Bar Røv</a></li>   
+    <head>
+        <title>Gæt et tal</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="stylesheets/numberGuesser.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/github-dark.min.css">
+        <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <ul class = "topnav">
+                <li><a href="index.html">Forside</a></li>
+                <li><a class = "active" href="numberGuesser.html">Gæt et tal</a></li>
+                <li><a href="barroev.html">Bar Røv</a></li>    
+            </ul>  
+        </header>
+        <main>
+            <script>hljs.highlightAll();</script>
+        
+            <div class="container">
+                <div id="game">
+                    <h3>Guess a number between 1-1000</h3>
 
-    <div class="container">
-        <h3>Guess a number between 1-1000</h3>
+                    <input type="text" placeholder="1-1000" id="guess">
+                    <br><br>
+                    <button onclick="guess()" id="guessBtn">Guess</button>
 
-        <input type="text" placeholder="1-1000" id="guess">
-        <br><br>
-        <button onclick="guess()" id="guessBtn">Guess</button>
+                    <p id="message1">Number of guesses: 0</p>
+                    <p id="message2">Guessed numbers: </p>
+                    <p id="message3">Player 1 starts</p>
+                    <p id ="message4">Score: </p>
 
-        <p id="message1">Number of guesses: 0</p>
-        <p id="message2">Guessed numbers: </p>
-        <p id="message3">Player 1 starts</p>
-        <p id ="message4">Score: </p>
-
-        <button onclick="newRound()" class="newRoundBtn"">New Round</button>
-        <button onclick="reload()" class="newGameBtn"">New Game</button>
-    </div>
-    <script src="/scripts/numberGuesser.js"></script>
-    <div id="code">
-        <h2>Number Guesser - HTML</h2>
-        <pre><code class="language-html">
+                    <button onclick="newRound()" class="newRoundBtn"">New Round</button>
+                    <button onclick="reload()" class="newGameBtn"">New Game</button>
+            </div>
+        </div>
+            <script src="/scripts/numberGuesser.js"></script>
+            <div id="code">
+                <h2>Number Guesser - HTML</h2>
+                <pre><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -266,7 +272,7 @@ function reload(){
     window.location.reload();
     document.getElementById(&quot;guess&quot;).value = '';
 }</code></pre>
-    </div>
-</body>
-
+            </div>
+        </main>
+    </body>
 </html>

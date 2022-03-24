@@ -1,7 +1,13 @@
 body{
-    height: 600px;
-    background: rgb(37, 36, 36);
+	height: 100%;
+	width: 100%;
+	background-color: rgb(37, 36, 36);
 }
+header{
+    height: 2em;
+}
+
+
 
 .container{
     display: grid;
@@ -40,6 +46,7 @@ ul li a{
 }
 .active{
     text-decoration:underline;
+    background-color: rgb(54, 54, 54)
 }
 
 ul li a:hover:not(.active) {
@@ -49,6 +56,7 @@ ul li a:hover:not(.active) {
 #maincontent{
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 5%;
 }
 
 #intro {
@@ -66,4 +74,17 @@ ul li a:hover:not(.active) {
 #numberGuesserHeader{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-left: 40%;
+}
+
+#code{
+	width: 80%;
+	display: grid;
+	margin: auto;
+	justify-items: center;
+	background-color: rgb(226, 226, 218);
+}
+
+pre{
+	min-width: 60%;
+	max-width: 60%;
 }
