@@ -18,16 +18,20 @@ header, body {
 ul li a{
     float: left;
     color: rgb(212, 205, 205);
-    margin-left: 18%;
+    margin-left: 18.5%;
     padding: 1% 2%;
     font-size: 17px;
+    font-weight: 500;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
     text-align: center;
 }
+.active{
+    text-decoration:underline;
+}
 
-ul li a:hover {
-    background-color: rgb(97, 96, 96);
+ul li a:hover:not(.active) {
+    background-color: rgb(36, 33, 33);
 }
 
 #maincontent{
