@@ -3,16 +3,14 @@ body{
     background: rgb(37, 36, 36);
 }
 
-
 .container{
     display: grid;
     justify-items: center;
-    align-items: center;
     width: 80%;
+    height: 100%;
     margin: auto;
+    padding: 1.5px 1px;
     background-color: rgb(226, 226, 218);
-    padding: 50px 10px;
-    border-radius: 5px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
