@@ -31,6 +31,242 @@
         <button onclick="reload()" class="newGameBtn"">New Game</button>
     </div>
     <script src="/scripts/numberGuesser.js"></script>
+    <div id="code">
+        <h2>Number Guesser - HTML</h2>
+        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Gæt et tal&lt;/title&gt;
+    &lt;meta charset=&quot:utf-8&quot:/&gt;
+    &lt;link rel=&quot:stylesheet&quot: href=&quot:stylesheets/numberGuesser.css&quot:&gt;
+    &lt;link rel=&quot:stylesheet&quot: href=&quot:stylesheets/style.css&quot:&gt;
+    &lt;link rel=&quot:stylesheet&quot: href=&quot:https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/github-dark.min.css&quot:&gt;
+    &lt;script src=&quot:https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js&quot:&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+    &lt;ul class = &quot:topnav&quot:&gt;
+        &lt;li&gt;&lt;a href=&quot:index.html&quot:&gt;Forside&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class = &quot:active&quot: href=&quot:numberGuesser.html&quot:&gt;Gæt et tal&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot:barroev.html&quot:&gt;Bar Røv&lt;/a&gt;&lt;/li&gt;   
+
+    &lt;div class=&quot:container&quot:&gt;
+        &lt;h3&gt;Guess a number between 1-1000&lt;/h3&gt;
+
+        &lt;input type=&quot:text&quot: placeholder=&quot:1-1000&quot: id=&quot:guess&quot:&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;button onclick=&quot:guess()&quot: id=&quot:guessBtn&quot:&gt;Guess&lt;/button&gt;
+
+        &lt;p id=&quot:message1&quot:&gt;Number of guesses: 0&lt;/p&gt;
+        &lt;p id=&quot:message2&quot:&gt;Guessed numbers: &lt;/p&gt;
+        &lt;p id=&quot:message3&quot:&gt;&lt;/p&gt;
+        &lt;p id =&quot:message4&quot:&gt;Score: &lt;/p&gt;
+
+        &lt;button onclick=&quot:newRound()&quot: class=&quot:newRoundBtn&quot:&quot:&gt;New Round&lt;/button&gt;
+        &lt;button onclick=&quot:reload()&quot: class=&quot:newGameBtn&quot:&quot:&gt;New Game&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot:/scripts/numberGuesser.js&quot:&gt;&lt;/script&gt;
+    &lt;div id=&quot:code&quot:&gt;
+        &lt;h2&gt;Number Guesser - HTML&lt;/h2&gt;
+        &lt;pre&gt;&lt;code class=&quot:language-html&quot:&gt;...&lt;/code&gt;&lt;/pre&gt;
+        &lt;h2&gt;Number Guesser - CSS&lt;/h2&gt;
+        &lt;pre&gt;&lt;code class=&quot:language-css&quot:&gt;...&lt;/code&gt;&lt;/pre&gt;
+        &lt;h2&gt;Number Guesser - JavaScript&lt;/h2&gt;Javascript&lt;/h2&gt;
+        &lt;pre&gt;&lt;code class=&quot:language-js&quot:&gt;...&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h2>Number Guesser - CSS</h2>
+        <pre><code class="language-css">
+body{
+    height: 600px;
+    background: rgb(37, 36, 36);
+}
+
+.container{
+    display: grid;
+    justify-items: center;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    padding: 1.5px 1px;
+    background-color: rgb(226, 226, 218);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 600;
+
+}
+input[type='text']{
+    width: 150px;
+    font-weight: 600;
+    color: rgb(15, 15, 32);
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid #202020;
+    font-size: 28px;
+}
+
+.newGameBtn{
+    width: 160px;
+    padding: 15px 0;
+    border-radius: 5px;
+    color: rgb(161, 12, 12);
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 5px;
+
+}
+
+button{
+    width: 160px;
+    padding: 15px 0;
+    border-radius: 5px;
+    color: black;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    outline: solid rgb(141, 137, 137);
+    outline-style: groove;
+}
+p{
+    font-weight: 400;
+
+}</code></pre>
+        <h2>Number Guesser - JavaScript</h2>Javascript</h2>
+        <pre><code class="language-js">
+var msg1 = document.getElementById(&quot;message1&quot;);
+var msg2 = document.getElementById(&quot;message2&quot;);
+var msg3 = document.getElementById(&quot;message3&quot;);
+var scoreMsg = document.getElementById(&quot;message4&quot;);
+var playerGuess = document.getElementById(&quot;guess&quot;).value;
+/*var player1Name = window.prompt(&quot;What is the name of player 1?&quot;);
+var player2Name = window.prompt(&quot;What is the name of player 2?&quot;); */
+var numOfRounds = 0;
+
+var answer = randomNum();
+var noOfGuesses = 0;
+var guessedNumbers = [];
+var player = 1;
+var playerOneScore = 0;
+var playerTwoScore = 0;
+let playerOneTime = 0;
+let playerTwoTime = 0;
+var timeStart = new Date();
+var timeEnd;
+
+
+
+function randomNum(){
+    return Math.floor(Math.random() * 1000) + 1;
+}
+function guess(){
+    const currentNum = answer;
+    const startTime = timeStart;
+    play(currentNum, startTime);
+}
+
+function play(answer, timeStart){ 
+    var scoreMsg = document.getElementById(&quot;message4&quot;);
+    var playerGuess = document.getElementById(&quot;guess&quot;).value;
+    
+    if (playerGuess &lt; 1 || playerGuess &gt; 1000 &amp:&amp: playerGuess != null){
+        alert(&quot;Number must be between 1-1000&quot;);
+    }
+    else{
+        guessedNumbers.push(&quot; &quot; + playerGuess);
+        noOfGuesses += 1;
+
+        if (playerGuess &lt; answer){
+            msg1.textContent = &quot;Your guess is too low&quot;;
+            msg2.textContent = &quot;Number of guesses: &quot; + noOfGuesses;
+            msg3.textContent = &quot;Guessed numbers: &quot; + guessedNumbers;
+        }
+        else if (playerGuess &gt; answer){
+            msg1.textContent = &quot;Your guess is too high&quot;;
+            msg2.textContent = &quot;Number of guesses: &quot; + noOfGuesses;
+            msg3.textContent = &quot;Guessed numbers: &quot; + guessedNumbers;
+        }
+        else if (playerGuess == answer){
+            timeEnd = new Date();
+            msg1.textContent = &quot;Yay you guessed correctly! The number was: &quot; + answer;
+            msg2.textContent = &quot;It took &quot; + noOfGuesses + &quot; tries&quot;;
+            document.getElementById(&quot;guessBtn&quot;).disabled = true;
+            if (player === 1){
+                playerOneScore += 10 - noOfGuesses;
+                msg3.textContent = &quot;Player one score: &quot; + playerOneScore;
+                playerOneTime = (timeEnd - timeStart) / 1000;
+            }
+            if (player === 2){
+                playerTwoSore += 10 - noOfGuesses;
+                msg3.textContent = &quot;Player two Score: &quot; + playerTwoScore;
+                playerTwoTime = (timeEnd - timeStart - playerOneTime) / 1000;
+            }
+        }
+
+    }
+
+    if (noOfGuesses &gt; 9 &amp:&amp: playerGuess != answer){
+        timeEnd = new Date();
+        msg1.textContent = &quot;You didn't guess it! You've used your 10 tries&quot;;
+        msg2.textContent = &quot;The correct answer was: &quot; + answer; 
+        document.getElementById(&quot;guessBtn&quot;).disabled = true;
+        if (player == 1){
+            playerOneScore += 10 - noOfGuesses;
+            scoreMsg.textContent = &quot;Player one score: &quot; + playerOneScore;
+            playerOneTime = (timeEnd - timeStart) / 1000;
+            msg1.innerHTML = &quot;Player one time: &quot; + Math.trunc(playerOneTime) + &quot; seconds&quot;;
+        }
+        else if (player == 2){
+            playerTwoScore += 10 - noOfGuesses;
+            scoreMsg.textContent = &quot;Player two Score: &quot; + playerTwoScore;
+            playerTwoTime = (timeEnd - timeStart) / 1000 - playerOneTime;
+            msg1.innerHTML = &quot;Player two time: &quot; + Math.trunc(playerTwoTime) + &quot; seconds&quot;;
+        }
+        if (numOfRounds &gt;= 1){
+                if (playerOneTime &lt; playerTwoTime || playerOneScore &gt; playerTwoScore){
+                    alert(&quot;Player 1 wins the game!!&quot;)
+                }
+                else if (playerOneTime &gt; playerTwoTime || playerOneScore &lt; playerTwoScore){
+                    alert(&quot;Player 2 wins the game!!&quot;)
+                }
+            }
+        }
+    
+    }
+
+function newRound(){
+    document.getElementById(&quot;guessBtn&quot;).disabled = false;
+    numOfRounds += 1;
+    noOfGuesses = 0;
+    guessedNumbers = [];
+    if (player === 1){
+        player = 2;
+    }
+    else if (player === 2){
+        player = 1;
+    }
+    document.getElementById(&quot;guess&quot;).value = '';
+    
+}
+
+function reload(){
+    window.location.reload();
+    document.getElementById(&quot;guess&quot;).value = '';
+}</code></pre>
+    </div>
 </body>
 
 </html>
