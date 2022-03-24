@@ -1,4 +1,3 @@
-
 body{
     height: 600px;
     background: rgb(37, 36, 36);
@@ -11,8 +10,10 @@ body{
     height: 100%;
     margin: auto;
     padding: 50px 1px;
-}
+    background-color: rgb(226, 226, 218);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+}
 .topnav{
     list-style: none;
     overflow: hidden;
@@ -39,7 +40,6 @@ ul li a{
 }
 .active{
     text-decoration:underline;
-    background-color: rgb(39, 39, 39)
 }
 
 ul li a:hover:not(.active) {
