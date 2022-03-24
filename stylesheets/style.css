@@ -1,5 +1,6 @@
 header, body {
     margin: 0;
+    margin-bottom: 5%;
     background-color: rgb(226, 226, 218);
 }
 .topnav{
@@ -28,6 +29,7 @@ ul li a{
 }
 .active{
     text-decoration:underline;
+    background-color: rgb(39, 39, 39)
 }
 
 ul li a:hover:not(.active) {
