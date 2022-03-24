@@ -9,7 +9,7 @@ body{
     width: 80%;
     height: 100%;
     margin: auto;
-    padding: 1.5px 1px;
+    padding: 50px 1px;
     background-color: rgb(226, 226, 218);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -24,7 +24,7 @@ input[type='text']{
     width: 150px;
     font-weight: 600;
     color: rgb(15, 15, 32);
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -35,27 +35,27 @@ input[type='text']{
 
 .newGameBtn{
     width: 160px;
-    padding: 15px 0;
+    padding: 10px 0;
     border-radius: 5px;
     color: rgb(161, 12, 12);
     border: none;
     font-size: 18px;
     font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 2px;
 
 }
 
 button{
     width: 160px;
-    padding: 15px 0;
+    padding: 10px 0;
     border-radius: 5px;
     color: black;
     border: none;
     font-size: 18px;
     font-weight: 600;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     outline: solid rgb(141, 137, 137);
     outline-style: groove;
 }

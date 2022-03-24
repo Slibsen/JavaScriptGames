@@ -11,13 +11,12 @@ var answer = randomNum();
 var noOfGuesses = 0;
 var guessedNumbers = [];
 var player = 1;
-var playerOneScore = 0;
-var playerTwoScore = 0;
+let playerOneScore = 0;
+let playerTwoScore = 0;
 let playerOneTime = 0;
 let playerTwoTime = 0;
 var timeStart = new Date();
 var timeEnd;
-
 
 
 function randomNum(){
@@ -34,7 +33,7 @@ function play(answer, timeStart){
     var playerGuess = document.getElementById("guess").value;
     
     if (playerGuess < 1 || playerGuess > 1000 && playerGuess != null){
-        alert("Number must be between 1-1000");
+        alert("Tallet skal være mellem 1-1000");
     }
     else{
         guessedNumbers.push(" " + playerGuess);
@@ -60,11 +59,12 @@ function play(answer, timeStart){
                 msg3.textContent = "Player one score: " + playerOneScore;
                 playerOneTime = (timeEnd - timeStart) / 1000;
             }
-            if (player === 2){
-                playerTwoSore += 10 - noOfGuesses;
+            else if (player === 2){
+                playerTwoScore += 10 - noOfGuesses;
                 msg3.textContent = "Player two Score: " + playerTwoScore;
                 playerTwoTime = (timeEnd - timeStart - playerOneTime) / 1000;
             }
+            checkWinner();
         }
 
     }
@@ -72,31 +72,41 @@ function play(answer, timeStart){
     if (noOfGuesses > 9 && playerGuess != answer){
         timeEnd = new Date();
         msg1.textContent = "You didn't guess it! You've used your 10 tries";
-        msg2.textContent = "The correct answer was: " + answer; 
+        msg2.textContent = "The correct answer was: " + answer;
         document.getElementById("guessBtn").disabled = true;
         if (player == 1){
-            playerOneScore += 10 - noOfGuesses;
             scoreMsg.textContent = "Player one score: " + playerOneScore;
             playerOneTime = (timeEnd - timeStart) / 1000;
             msg1.innerHTML = "Player one time: " + Math.trunc(playerOneTime) + " seconds";
         }
         else if (player == 2){
-            playerTwoScore += 10 - noOfGuesses;
             scoreMsg.textContent = "Player two Score: " + playerTwoScore;
             playerTwoTime = (timeEnd - timeStart) / 1000 - playerOneTime;
             msg1.innerHTML = "Player two time: " + Math.trunc(playerTwoTime) + " seconds";
         }
-        if (numOfRounds >= 1){
-                if (playerOneTime < playerTwoTime || playerOneScore > playerTwoScore){
-                    alert("Player 1 wins the game!!")
-                }
-                else if (playerOneTime > playerTwoTime || playerOneScore < playerTwoScore){
-                    alert("Player 2 wins the game!!")
-                }
+        checkWinner();
+    }
+}
+
+function checkWinner(){
+    if (numOfRounds >= 1){
+        if (playerOneScore == playerTwoScore)
+        {
+            if (playerOneTime < playerTwoTime){
+                alert("Player 1 wins the game!!")
+            }
+            else if (playerTwoTime < playerOneTime){
+                alert("Player 2 wins the game!!")
             }
         }
-    
+        else if (playerOneScore > playerTwoScore){
+            alert("Player 1 wins the game!!")
+        }
+        else if (playerTwoScore > playerOneScore){
+            alert("Player 2 wins the game!!")
+        }
     }
+}
 
 function newRound(){
     document.getElementById("guessBtn").disabled = false;
@@ -110,6 +120,7 @@ function newRound(){
         player = 1;
     }
     document.getElementById("guess").value = '';
+    console.log(player)
     
 }
 

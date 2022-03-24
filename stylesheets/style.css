@@ -1,6 +1,18 @@
-header, body {
-    margin: 0;
+body{
+    height: 600px;
+    background: rgb(37, 36, 36);
+}
+
+.container{
+    display: grid;
+    justify-items: center;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    padding: 50px 1px;
     background-color: rgb(226, 226, 218);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 .topnav{
     list-style: none;
@@ -11,7 +23,7 @@ header, body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(2, 2, 2, 0.918);
+    background-color: rgba(37, 36, 36);
 
 }
 
@@ -35,24 +47,23 @@ ul li a:hover:not(.active) {
 }
 
 #maincontent{
-    padding:  3em 0;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #intro {
     padding: 10px;
-    margin-left: 30%;
+    margin-left: 10%;
     font-size: 18px;
     text-align: justify;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #barroevHeader{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-left: 25%;
+    margin-left: 40%;
 }
 
 #numberGuesserHeader{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-left: 25%;
+    margin-left: 40%;
 }
