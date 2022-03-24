@@ -5,29 +5,322 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>Projektopgave 2 Elisabeth & Flemming</title>
-        <link rel="stylesheet" href="/stylesheets/barroev.css"/>
-        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="stylesheet" href="stylesheets/barroev.css"/>
         <script src="/scripts/barroev.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/github-dark.min.css">
+        <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
         
     </head>
     <body>
-        <ul class = "topnav">
-            <li><a href="index.html">Front Page</a></li>
-            <li><a href="numberGuesser.html">Guess a number game</a></li>
-            <li><a class = "active" href="barroev.html">Bar Røv game</a></li>  
+        <script>hljs.highlightAll();</script>
         <div id="game">
-            <button onclick="rollDice()">Roll Dice</button>
-            <button onclick="clearDice()">Start forfra</button>
-            <div id="die1" class="activeDice">0</div>
-            <div id="die2" class="activeDice">0</div>
-            <div id="die3" class="activeDice">0</div>
-            <div id="die4" class="activeDice">0</div>
-            <div id="die5" class="activeDice">0</div>
-            <div id="die6" class="activeDice">0</div>
-            <h2 id="status" style="clear:left;"></h2>
-            <h2 id="status2" style="clear:left;"></h2>
-            <h2 id="status3" style="clear:left;"></h2>
+            <h1>Bar Røv - brug knapperne til at spille</h1>
+            <div id="buttons">
+                <button id="rollBtn" onclick="rollDice()">Roll Dice</button>
+                <button id="nextBtn" onclick="nextTurn()">Next Turn</button>
+                <button id="clearBtn" onclick="newGame()">Start forfra</button>
+            </div>
+            <h3 id="activeTurnMsg" class="message" style="clear:left;"></h2>
+            <h3 id="roundScoreMsg" class="message" style="clear:left;"></h2>
+            <div id="diceObjects">
+                <div id="die1" class="activeDice">0</div>
+                <div id="die2" class="activeDice">0</div>
+                <div id="die3" class="activeDice">0</div>
+                <div id="die4" class="activeDice">0</div>
+                <div id="die5" class="activeDice">0</div>
+                <div id="die6" class="activeDice">0</div>
+            </div>
+            <h3 id="p1ScoreMsg" class="message" style="clear:left;"></h2>
+            <h3 id="p2ScoreMsg" class="message" style="clear:left;"></h2>
+            <h3 id="status" class="message" style="clear:left;"></h2>
         </div>
+        <div id="code">
+            <h2>Bar Røv - HTML</h2>
+            <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;/&gt;
+        &lt;title&gt;Projektopgave 2 Elisabeth &qout; Flemming&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;/&gt;
+
+        &lt;script src=&quot;/scripts/barroev.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/github-dark.min.css&quot;&gt;
+        &lt;script src=&quot;https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js&quot;&gt;&lt;/script&gt;
         
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+        &lt;div id=&quot;game&quot;&gt;
+            &lt;h1&gt;Bar Røv - brug knapperne til at spille&lt;/h1&gt;
+            &lt;div id=&quot;buttons&quot;&gt;
+                &lt;button id=&quot;rollBtn&quot; onclick=&quot;rollDice()&quot;&gt;Roll Dice&lt;/button&gt;
+                &lt;button id=&quot;nextBtn&quot; onclick=&quot;nextTurn()&quot;&gt;Next Turn&lt;/button&gt;
+                &lt;button id=&quot;clearBtn&quot; onclick=&quot;newGame()&quot;&gt;Start forfra&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;h3 id=&quot;activeTurnMsg&quot; class=&quot;message&quot; style=&quot;clear:left;&quot;&gt;&lt;/h2&gt;
+            &lt;h3 id=&quot;roundScoreMsg&quot; class=&quot;message&quot; style=&quot;clear:left;&quot;&gt;&lt;/h2&gt;
+            &lt;div id=&quot;diceObjects&quot;&gt;
+                &lt;div id=&quot;die1&quot; class=&quot;activeDice&quot;&gt;0&lt;/div&gt;
+                &lt;div id=&quot;die2&quot; class=&quot;activeDice&quot;&gt;0&lt;/div&gt;
+                &lt;div id=&quot;die3&quot; class=&quot;activeDice&quot;&gt;0&lt;/div&gt;
+                &lt;div id=&quot;die4&quot; class=&quot;activeDice&quot;&gt;0&lt;/div&gt;
+                &lt;div id=&quot;die5&quot; class=&quot;activeDice&quot;&gt;0&lt;/div&gt;
+                &lt;div id=&quot;die6&quot; class=&quot;activeDice&quot;&gt;0&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;h3 id=&quot;p1ScoreMsg&quot; class=&quot;message&quot; style=&quot;clear:left;&quot;&gt;&lt;/h2&gt;
+            &lt;h3 id=&quot;p2ScoreMsg&quot; class=&quot;message&quot; style=&quot;clear:left;&quot;&gt;&lt;/h2&gt;
+            &lt;h3 id=&quot;status&quot; class=&quot;message&quot; style=&quot;clear:left;&quot;&gt;&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;code&quot;&gt;
+            &lt;h2&gt;Bar Røv - HTML&lt;/h2&gt;
+            &lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;...&lt;/code&gt;&lt;/pre&gt;
+            &lt;h2&gt;Bar Røv - CSS&lt;/h2&gt;
+            &lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;...&lt;/code&gt;&lt;/pre&gt;
+            &lt;h2&gt;Bar Røv - Javascript&lt;/h2&gt;
+            &lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;...&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <h2>Bar Røv - CSS</h2>
+                <pre><code class="language-css">
+body{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(37, 36, 36);
+}
+
+div.activeDice{
+    float:left;
+    width:32px;
+    background:#F5F5F5;
+    border:#999 1px solid;
+    padding:10px;
+    font-size:24px;
+    text-align:center;
+    margin:5px;
+}
+
+div.inactiveDice{
+    float:inline-end;
+    width:32px;
+    background:#ff0000;
+    border:#999 1px solid;
+    padding:10px;
+    font-size:24px;
+    text-align:center;
+    margin:5px;
+}
+
+#game{
+    width: 80%;
+    display: grid;
+    margin: auto;
+    justify-items: center;
+    background-color: rgb(226, 226, 218);
+    font-family: &qout;Segoe UI&qout;, Tahoma, Geneva, Verdana, sans-serif&qout;;
+}
+
+.message{
+    margin-bottom: 1%;
+}
+
+#buttons{
+    margin-bottom: 3%;
+    margin-left: 1%;
+}
+
+#code{
+    width: 80%;
+    display: grid;
+    margin: auto;
+    justify-items: center;
+    background-color: rgb(226, 226, 218);
+}
+
+pre{
+    max-width: 60%;
+    min-width: 60%;
+}
+                </code></pre>
+                <h2>Bar Røv - Javascript</h2>
+                <pre><code class="language-js">
+var activeDice = document.getElementsByClassName(&quot;activeDice&quot;);
+var inactiveDice = document.getElementsByClassName(&quot;inactiveDice&quot;);
+var totalScore = 0;
+var player1Name = window.prompt(&quot;indtast navn til spiller 1: &quot;);
+var player2Name = window.prompt(&quot;indtast navn til spiller 2: &quot;);
+var player1Score = 0;
+var player2Score = 0;
+let player = &quot;p1&quot;;
+const scoreLimit = 50;
+window.onload = (event) =&gt; {
+    getVariables();
+    nextBtn.disabled=true;
+    rollBtn.disabled=false;
+    activeTurnMsg.innerHTML=&quot;Current players turn: &quot; + activePlayerName(player);
+    roundScoreMsg.innerHTML=&quot;Current players score this round - &quot; +0;
+    p1ScoreMsg.innerHTML=player1Name + &quot; - Score - &quot; + player1Score;
+    p2ScoreMsg.innerHTML=player2Name + &quot; - Score - &quot; + player2Score;
+};
+function getVariables (){
+    const rollBtn = document.getElementById(&quot;rollBtn&quot;);
+    const nextBtn = document.getElementById(&quot;nextBtn&quot;);
+    const clearBtn = document.getElementById(&quot;clearBtn&quot;);
+    var activeTurnMsg = document.getElementById(&quot;activeTurnMsg&quot;);
+    var roundScoreMsg = document.getElementById(&quot;roundScoreMsg&quot;);
+    var p1ScoreMsg = document.getElementById(&quot;p1ScoreMsg&quot;);
+    var p2ScoreMsg = document.getElementById(&quot;p2ScoreMsg&quot;);
+    var status = document.getElementById(&quot;status&quot;);
+}
+
+function activePlayerName (currentPlayer){
+    if (currentPlayer === &quot;p1&quot;) {
+        return player1Name;
+    } 
+    else if (currentPlayer === &quot;p2&quot;) {
+        return player2Name;
+    }
+}
+
+function activePlayerScore (currentPlayer, score){
+    getVariables();
+    if (currentPlayer === &quot;p1&quot;) {
+        player1Score += score;
+        p1ScoreMsg.innerHTML=player1Name + &quot; - Score - &quot; + player1Score;
+    } 
+    else if (currentPlayer === &quot;p2&quot;) {
+        player2Score += score;
+        p2ScoreMsg.innerHTML=player2Name + &quot; - Score - &quot; + player2Score;
+    }
+}
+
+function winner(currentPlayer){
+    getVariables();
+    var winner;
+    if (currentPlayer === &quot;p1&quot;) {
+        if (player1Score &gt;= scoreLimit){
+            if (player1Score &gt; player2Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert(player1Name + &quot; Vandt med &quot; + player1Score);
+            }
+            else if (player1Score = player2Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert(&quot;Spillet er uafgjort &quot;);
+            }
+        }
+    }   
+    else if (currentPlayer === &quot;p2&quot;) {
+        if (player2Score &gt;= scoreLimit){
+            if (player2Score &gt; player1Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert(player2Name + &quot; Vandt med &quot; + player2Score);
+            }
+            else if (player2Score = player1Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert(&quot;Spillet er uafgjort &quot;);
+            }
+        }
+    }
+}
+
+function switchPlayer(currentPlayer) {
+    if (currentPlayer === &quot;p1&quot;) {
+        player = &quot;p2&quot;;
+    } 
+    else {
+        player = &quot;p1&quot;;
+    }
+    }
+
+function nextTurn() {
+    if (totalScore &lt; scoreLimit){
+        switchPlayer(player);
+        clearDice();
+    }    
+}
+function newGame(){
+    player1Name = window.prompt(&quot;indtast navn til spiller 1: &quot;);
+    player2Name = window.prompt(&quot;indtast navn til spiller 2: &quot;);
+    clearDice();
+    player1Score = 0;
+    player2Score = 0;
+    p1ScoreMsg.innerHTML=player1Name + &quot; - Score - &quot; + player1Score;
+    p2ScoreMsg.innerHTML=player2Name + &quot; - Score - &quot; + player2Score;
+}
+
+function clearDice() {
+    getVariables();
+    var tempd1 = document.getElementById(&quot;die1&quot;);
+    var tempd2 = document.getElementById(&quot;die2&quot;);
+    var tempd3 = document.getElementById(&quot;die3&quot;);
+    var tempd4 = document.getElementById(&quot;die4&quot;);
+    var tempd5 = document.getElementById(&quot;die5&quot;);
+    var tempd6 = document.getElementById(&quot;die6&quot;);
+    tempd1.className=&quot;activeDice&quot;;
+    tempd1.innerHTML=&quot;0&quot;;
+    tempd2.className=&quot;activeDice&quot;;
+    tempd2.innerHTML=&quot;0&quot;;
+    tempd3.className=&quot;activeDice&quot;;
+    tempd3.innerHTML=&quot;0&quot;;
+    tempd4.className=&quot;activeDice&quot;;
+    tempd4.innerHTML=&quot;0&quot;;
+    tempd5.className=&quot;activeDice&quot;;
+    tempd5.innerHTML=&quot;0&quot;;
+    tempd6.className=&quot;activeDice&quot;;
+    tempd6.innerHTML=&quot;0&quot;;
+    totalScore = 0;
+    nextBtn.disabled=true;
+    rollBtn.disabled=false;
+    activeTurnMsg.innerHTML=&quot;Current players turn: &quot; + activePlayerName(player);
+    roundScoreMsg.innerHTML=&quot;Current players score this round - &quot; +0;
+
+
+    ;
+}
+
+function rollDice() { 
+    getVariables();
+    var turnRolls = [];
+    var turnScore = 0;
+    for (let i = activeDice.length-1; i &gt;= 0; i--) {
+        d = Math.floor(Math.random() * 6) + 1;
+        activeDice[i].innerHTML=d;
+        if (d == 2 || d == 5){
+            activeDice[i].className=&quot;inactiveDice&quot;;
+        }
+        turnRolls.push(d); 
+    }
+    if (turnRolls.includes(2)) {
+        turnScore = 0;
+    }
+    else if (turnRolls.includes(5)){
+        turnScore = 0;
+    }
+    else {
+        for (let i = 0; i &lt; turnRolls.length; i++) {
+            turnScore += turnRolls[i];
+        }
+        totalScore += turnScore;
+        turnScore = 0;
+        roundScoreMsg.innerHTML=&quot;Current players score this round - &quot; + totalScore;
+    }
+    if (activeDice.length == 0) {
+        roundScoreMsg.innerHTML=&quot;Current players score this round - &quot; + totalScore;
+        activePlayerScore(player, totalScore);
+        rollBtn.disabled=true;
+        nextBtn.disabled=false;
+        winner(player);
+    }
+    
+}
+</code></pre>
+        </div>
     </body>
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
     height: 600px;
     background: rgb(37, 36, 36);
@@ -10,6 +11,11 @@ body{
     height: 100%;
     margin: auto;
     padding: 50px 1px;
+=======
+header, body {
+    margin: 0;
+    margin-bottom: 5%;
+>>>>>>> d0aa09978e0e8233c1a9b3d06d52810c044f959d
     background-color: rgb(226, 226, 218);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -40,6 +46,7 @@ ul li a{
 }
 .active{
     text-decoration:underline;
+    background-color: rgb(39, 39, 39)
 }
 
 ul li a:hover:not(.active) {
