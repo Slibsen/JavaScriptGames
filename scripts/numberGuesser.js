@@ -3,8 +3,6 @@ var msg2 = document.getElementById("message2");
 var msg3 = document.getElementById("message3");
 var scoreMsg = document.getElementById("message4");
 var playerGuess = document.getElementById("guess").value;
-/*var player1Name = window.prompt("What is the name of player 1?");
-var player2Name = window.prompt("What is the name of player 2?"); */
 var numOfRounds = 0;
 
 var answer = randomNum();
