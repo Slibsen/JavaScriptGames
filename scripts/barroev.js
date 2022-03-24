@@ -1,9 +1,113 @@
 var activeDice = document.getElementsByClassName("activeDice");
 var inactiveDice = document.getElementsByClassName("inactiveDice");
-var status = document.getElementById("status");
-var totalScore = 0
+var totalScore = 0;
+var player1Name = window.prompt("indtast navn til spiller 1: ");
+var player2Name = window.prompt("indtast navn til spiller 2: ");
+var player1Score = 0;
+var player2Score = 0;
+let player = 'p1';
+const scoreLimit = 50;
+window.onload = (event) => {
+    getVariables();
+    nextBtn.disabled=true;
+    rollBtn.disabled=false;
+    activeTurnMsg.innerHTML="Current players turn: " + activePlayerName(player);
+    roundScoreMsg.innerHTML="Current players score this round - " +0;
+    p1ScoreMsg.innerHTML=player1Name + " - Score - " + player1Score;
+    p2ScoreMsg.innerHTML=player2Name + " - Score - " + player2Score;
+};
+function getVariables (){
+    const rollBtn = document.getElementById("rollBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    var activeTurnMsg = document.getElementById("activeTurnMsg");
+    var roundScoreMsg = document.getElementById("roundScoreMsg");
+    var p1ScoreMsg = document.getElementById("p1ScoreMsg");
+    var p2ScoreMsg = document.getElementById("p2ScoreMsg");
+    var status = document.getElementById("status");
+}
+
+function activePlayerName (currentPlayer){
+    if (currentPlayer === 'p1') {
+        return player1Name;
+    } 
+    else if (currentPlayer === 'p2') {
+        return player2Name;
+    }
+}
+
+function activePlayerScore (currentPlayer, score){
+    getVariables();
+    if (currentPlayer === 'p1') {
+        player1Score += score;
+        p1ScoreMsg.innerHTML=player1Name + " - Score - " + player1Score;
+    } 
+    else if (currentPlayer === 'p2') {
+        player2Score += score;
+        p2ScoreMsg.innerHTML=player2Name + " - Score - " + player2Score;
+    }
+}
+
+function winner(currentPlayer){
+    getVariables();
+    var winner;
+    if (currentPlayer === 'p1') {
+        if (player1Score >= scoreLimit){
+            if (player1Score > player2Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert(player1Name + " Vandt med " + player1Score);
+            }
+            else if (player1Score = player2Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert("Spillet er uafgjort ");
+            }
+        }
+    }   
+    else if (currentPlayer === 'p2') {
+        if (player2Score >= scoreLimit){
+            if (player2Score > player1Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert(player2Name + " Vandt med " + player2Score);
+            }
+            else if (player2Score = player1Score){
+                rollBtn.disabled=true;
+                nextBtn.disabled=true;
+                window.alert("Spillet er uafgjort ");
+            }
+        }
+    }
+}
+
+function switchPlayer(currentPlayer) {
+    if (currentPlayer === 'p1') {
+      player = 'p2';
+    } 
+    else {
+      player = 'p1';
+    }
+  }
+
+function nextTurn() {
+    if (totalScore < scoreLimit){
+        switchPlayer(player);
+        clearDice();
+    }    
+}
+function newGame(){
+    player1Name = window.prompt("indtast navn til spiller 1: ");
+    player2Name = window.prompt("indtast navn til spiller 2: ");
+    clearDice();
+    player1Score = 0;
+    player2Score = 0;
+    p1ScoreMsg.innerHTML=player1Name + " - Score - " + player1Score;
+    p2ScoreMsg.innerHTML=player2Name + " - Score - " + player2Score;
+}
 
 function clearDice() {
+    getVariables();
     var tempd1 = document.getElementById("die1");
     var tempd2 = document.getElementById("die2");
     var tempd3 = document.getElementById("die3");
@@ -23,19 +127,19 @@ function clearDice() {
     tempd6.className="activeDice";
     tempd6.innerHTML="0";
     totalScore = 0;
-    status3.innerHTML=""
-    status2.innerHTML="nyt spil startet";
+    nextBtn.disabled=true;
+    rollBtn.disabled=false;
+    activeTurnMsg.innerHTML="Current players turn: " + activePlayerName(player);
+    roundScoreMsg.innerHTML="Current players score this round - " +0;
+
+
+    ;
 }
 
 function rollDice() { 
+    getVariables();
     var turnRolls = [];
     var turnScore = 0;
-    var activeDice = document.getElementsByClassName("activeDice");
-    var inactiveDice = document.getElementsByClassName("inactiveDice");
-    var status = document.getElementById("status");
-    var status2 = document.getElementById("status2");
-    var status3 = document.getElementById("status3");
-    status2.innerHTML=""
     for (let i = activeDice.length-1; i >= 0; i--) {
         d = Math.floor(Math.random() * 6) + 1;
         activeDice[i].innerHTML=d;
@@ -56,126 +160,14 @@ function rollDice() {
         }
         totalScore += turnScore;
         turnScore = 0;
-        status3.innerHTML=totalScore;
+        roundScoreMsg.innerHTML="Current players score this round - " + totalScore;
     }
     if (activeDice.length == 0) {
-        status3.innerHTML='The turn has ended you got a total of' + ' ' + totalScore + ' ' + 'points';
-        return totalScore;
+        roundScoreMsg.innerHTML="Current players score this round - " + totalScore;
+        activePlayerScore(player, totalScore);
+        rollBtn.disabled=true;
+        nextBtn.disabled=false;
+        winner(player);
     }
+    
 }
-
-/*
-        d1.rollDie();
-        if (d1.value == 2 || d1.value == 5){
-            d1.locked = true;
-            die1.style.backgroundColor="red";
-            
-        }  
-        else{die1.style.backgroundColor="lightgray"}
-        turnRolls.push(d1.value);
-
-        d2.rollDie();
-        if (d2.value == 2 || d2.value == 5){
-            d2.locked = true;
-            die2.style.backgroundColor="red"
-        }
-        else{die2.style.backgroundColor="lightgray"}
-        turnRolls.push(d2.value);
-
-        d3.rollDie();
-        if (d3.value == 2 || d3.value == 5){
-            d3.locked = true;
-            die3.style.backgroundColor="red"
-        }
-        else{die3.style.backgroundColor="lightgray"}
-        turnRolls.push(d3.value);
-
-        d4.rollDie();
-        if (d4.value == 2 || d4.value == 5){
-            d4.locked = true;
-            die4.style.backgroundColor="red"
-        }
-        else{die4.style.backgroundColor="lightgray"}
-        turnRolls.push(d4.value);
-
-        d5.rollDie();
-        if (d5.value == 2 || d5.value == 5){
-            d5.locked = true;
-            die5.style.backgroundColor="red"
-        }
-        else{die5.style.backgroundColor="lightgray"}
-        turnRolls.push(d5.value);
-
-        d6.rollDie();
-        if (d6.value == 2 || d6.value == 5){
-            d6.locked = true;
-            die6.style.backgroundColor="red"
-        }
-        else{die6.style.backgroundColor="lightgray"}
-        turnRolls.push(d6.value);
-
-        if(turnRolls.includes(2)){
-            turnRolls=[]
-            turnSum = 0
-            status3.innerHTML=turnSum;
-        }
-        else if (turnRolls.includes(5)){
-            turnRolls=[]
-            turnSum = 0
-            status3.innerHTML=turnSum;
-        }
-        else {
-            let turnSum = 0;
-
-            for (let i = 0; i < turnRolls.length; i++) {
-                turnSum += turnRolls[i];
-            }
-            totalSum += turnSum;
-            turnSum = 0;
-            status3.innerHTML=totalSum;
-        }
-
-        if (d1.locked==true && d2.locked==true && d3.locked==true && d4.locked==true && d5.locked==true && d6.locked==true){
-            status.innerHTML = "slut"
-        }
-        else {
-            status.innerHTML = "You rolled "+diceTotal+".";
-            document.cookie
-    }
-
-
-  
-
-    var diceTotal = d1.value + d2.value + d3.value + d4.value + d5.value + d6.value;
-
-    die1.innerHTML = d1.value;
-    die2.innerHTML = d2.value;
-    die3.innerHTML = d3.value;
-    die4.innerHTML = d4.value;
-    die5.innerHTML = d5.value;
-    die6.innerHTML = d6.value;
-}
-
-
-
-/*
-    const diceList = [d1, d2, d3, d4, d5, d6];
-    activeDice = [];
-    prefix = "die";
-
-
-    for (let i = 0; i < diceList.lenght+1; i++) {
-        if (diceList[i].locked == false) {
-            activeDice.push(diceList[i]);
-            diceList[i].rollDie;
-            this["die"+i] = document.getElementById("die"+i);
-            this["die"+i].innerHTML = diceList[i].value;
-        }
-        else {
-            diceList[i].rollDie();
-            this["die"+i] = document.getElementById("die"+i);
-            this["die"+i].innerHTML = diceList[i].value;}
-
-
-    }
-*/
